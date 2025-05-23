@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .loading {
+            display: none;
+            font-size: 20px;
+            text-align: center;
+            margin: 20px;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+        }
+        .form-container {
+            margin: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div id="loadingIndicator" class="loading">Loading...</div>
+    <div id="dataContainer"></div>
+
+    <div class="form-container">
+        <h2>Add New Post</h2>
+        <form id="addPostForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+            <button type="submit">Add Post</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAndDisplayPosts();
+        });
+
+        document.getElementById('addPostForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const quantity = document.getElementById('quantity').value;
+            const author = document.getElementById('author').value;
+            
+            axios.post('http://localhost:8080/Bookstore/add', {
+                title,
+                quantity,
+                author
+            })
+            .then(response => {
+                fetchAndDisplayPosts(); // Refresh the list of posts
+            })
+            .catch(error => {
+                console.error('Error adding post:', error);
+            });
+        });
+    </script>
+</body>
+</html>

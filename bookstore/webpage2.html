@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Posts</title>
+</head>
+<body>
+    <script>
+        function () {
+            console.log("Fetching and displaying posts...");
+            axios.get('http://localhost:8080/Bookstore/getall')
+        .then(response => {
+            const posts = response.data; // Array of posts
+
+            // Get the <ul> element
+            const postsList = document.getElementById('posts-list');
+
+            // Clear any existing content
+            postsList.innerHTML = '';
+
+            // Iterate over the posts and create list items
+            posts.forEach(post => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${post.title}: ${post.body}`;
+                postsList.appendChild(listItem);
+            });        })}
+    </script>
+    <button onclick="()">Fetch Posts</button>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BookStore</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+* {
+  box-sizing: border-box;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around; 
+    background-color: white ;
+    gap: 30px; 
+    padding: 10px; 
+}
+.flex-container > div {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    background-color: white;
+    width: 140px; 
+    text-align: center;
+    line-height: 400px; 
+    font-size: 90px;
+    color: red; 
+}
+
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  overflow-y: hidden;
+  overflow-x:hidden;
+
+}
+
+/* Header/logo Title */
+.header {
+  padding: 80px;
+  text-align: center;
+  background-image: url("a.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  background-size: cover;
+}
+
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 80px;
+}
+.header p {
+  font-size: 45px;
+  text-align: center;
+  height: 0px;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  left: 100;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  padding-top: 60px;
+}
+.modal-content {
+  max-width: 400px; /* Set a maximum width */
+  max-height: 800px; 
+  background-color: #fefefe;
+  margin:-30px 450px; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #000000;
+  width: 100%; /* Could be more or less, depending on screen size */
+  box-sizing: border-box;
+  text-align: center;
+}
+.modal-content label {
+  text-align: center;
+  display: block; /* Make labels block elements to ensure alignment */
+  margin-bottom: 5px; /* Space below labels */
+}
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding inside the input */
+  margin: 10px 0; /* Space between fields */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 100px; /* Rounded corners */
+  text-align: center;
+}
+
+.close {
+  display: flex;
+    right: 100%;
+    top: 0%;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    justify-content: flex-end;
+    padding: 8px;
+
+}
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 100px;
+}
+span.psw {
+     display: block;
+     float: none;
+     a {
+      text-decoration:none; /* Removes underline from all links */
+     }
+        }
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+} 
+
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: black;
+}
+.my-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        color: black;
+        transition: background-color 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .my-link:hover {
+        background-color: white;
+    }
+
+    .my-link img {
+        margin-right: 10px;
+    }
+
+    .my-link span {
+        margin-block: 0px;
+        font-size: 14px;
+        font-weight: bold; 
+        
+    }   
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1>BookStore</h1>
+        <p>The best books</p>
+    </div>
+
+    <div class="navbar" style="cursor: pointer;">
+        <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a>
+        <a href="#">sign up</a> 
+    </div>
+
+    <div class="flex-container">
+        <a href="" class="my-link">
+            <img src="top.png" alt="Description of image" style="width: 140px; height: 120px;">
+            <span>TOP100</span>
+        </a>
+        <a href="https://example.com" class="my-link">
+            <img src="investigate.png" alt="Description of image" style="width: 140px; height: 120px;">
+            <span>Investigate</span>
+        </a>
+        <a href="https://example.com" class="my-link">
+            <img src="comingsoon.png" alt="Description of image" style="width: 190px; height: 120px;">
+            <span>Coming Soon</span>
+        </a>
+        <a href="https://example.com" class="my-link">
+            <img src="print.png" alt="Description of image" style="width: 140px; height: auto;">
+            <span>Print</span>
+        </a>
+    </div>
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="howdy.png" alt="Avatar" class="avatar">
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <div class="ocp" style="display:flex; justify-content: space-between;">
+                        <label>
+                            <input type="checkbox" style="cursor: pointer;" name="remember"> Remember me
+                        </label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                </div>
+                <div class="container" style="background-color:#ffffff;flex-direction: row;">
+                    <button type="button" onclick="handleLogin()">Login</button> <!-- Handle login via JavaScript -->
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+</body>
+</html>
